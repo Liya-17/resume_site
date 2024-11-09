@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* CSS for Dark Theme Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            background-image: url("{% static 'bg1.jpg' %}"); /* Background image option */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(28, 28, 28, 0.8);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ff0066;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff0066;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: rgba(28, 28, 28, 0.85);
+            border: 1px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ff0066;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #ff0066;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .intro-content h1 {
+            font-size: 2.5rem;
+            color: #ff0066;
+        }
+
+        .intro-content h2 {
+            font-size: 1.8rem;
+            color: #e0e0e0;
+        }
+
+        .skills-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-box {
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-box h3 {
+            color: #ff0066;
+            margin-bottom: 10px;
+        }
+
+        .skill-box p {
+            color: #e0e0e0;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        form label {
+            display: block;
+            font-size: 0.9rem;
+            margin: 10px 0 5px;
+            color: #e0e0e0;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #333;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        form input:focus, form textarea:focus {
+            border-color: #ff0066;
+        }
+
+        form button {
+            padding: 12px 24px;
+            background: #ff0066;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background: #cc0055;
+        }
+        
+        .project-box {
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-box h4 {
+            color: #ff0066;
+            margin-bottom: 10px;
+        }
+
+        .project-box p {
+            color: #e0e0e0;
+        }
+
+        /* General section styling */
+.section {
+    padding: 60px 20px;
+    margin: 40px auto;
+    background-color: #1c1c1c;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 1000px;
+}
+
+/* Heading for About Me */
+#about h2 {
+    font-size: 2.5rem;
+    color: #ff0066;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ff0066;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Layout for About Me content */
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Text section styling */
+.about-text {
+    max-width: 600px;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-text p strong {
+    color: #ff0066;
+}
+
+/* Image section styling */
+.about-image {
+    max-width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 4px solid #ff0066;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        max-width: 100%;
+    }
+
+    .about-image {
+        margin-top: 20px;
+        max-width: 200px;
+        height: 200px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="intro" class="section">
+        <div class="intro-content">
+            <h1>Hello, I'm Liya</h1>
+            <h2>Welcome to my Profile!</h2>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Name:</strong> Liya Manusree</p>
+                <p><strong>University:</strong> KL University</p>
+                <p><strong>Degree:</strong> Artificial Intelligence and Data Science</p>
+                <p>With a foundation in <strong>C, Python, and Java</strong>, and a growing expertise in <strong>HTML, CSS, and Django</strong>, I'm passionate about leveraging my skills to build seamless digital experiences. Currently, I'm focused on honing my skills in <strong>full-stack development</strong> and exploring the world of <strong>Artificial Intelligence</strong> and <strong>Data Science</strong>.</p>
+                <p>I am driven to create user-friendly web solutions that make a difference. I believe in continuous learning and applying innovative techniques to solve real-world problems. Welcome to my portfolio!</p>
+            </div>
+            <div class="about-image">
+                <img src="{% static 'profile.jpg' %}" alt="Liya Manusree" class="about-img">
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-content">
+            <div class="skill-box">
+                <h3>Programming Languages</h3>
+                <p><strong>C, Python, Java</strong></p>
+                <p>Basic foundation in essential programming languages, with a focus on efficiency and problem-solving.</p>
+            </div>
+    
+            <div class="skill-box">
+                <h3>Frontend Development</h3>
+                <p><strong>HTML, CSS</strong></p>
+                <p>Crafting responsive, user-friendly interfaces with clean, modern design principles.</p>
+            </div>
+    
+            <div class="skill-box">
+                <h3>Backend & Full Stack Development</h3>
+                <p><strong>Python Django</strong></p>
+                <p>Proficient in backend development using Django, managing databases, and creating scalable web applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="section">
+        <h2>Works</h2>
+        <h3>Projects</h3>
+        <div class="projects-content">
+            <div class="project-box">
+                <h4>Online Student Notice Board</h4>
+                <p>A Django-based application for digital announcements, allowing administrators, HODs, and faculty to post and manage notices efficiently for students.</p>
+            </div>
+    
+            <div class="project-box">
+                <h4>Personal Portfolio</h4>
+                <p>A portfolio website showcasing my skills, projects, and experience as a web developer, designed with a dark theme and user-friendly navigation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <form action="#" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</body>
+</html>
